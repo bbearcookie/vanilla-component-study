@@ -33,20 +33,13 @@ export default class Counter extends Component {
     this.$target.appendChild(this.$wrapper);
   }
 
-  getTemplate() {
-    const template = new Map();
-
-    template.set(this.$addButton, '+');
-    template.set(this.$minusButton, '-');
-    template.set(this.$count, `현재 카운트: ${this.count}`);
-
-    return template;
-  }
-
   render() {
-    const template = this.getTemplate();
-    this.$addButton.innerText = template.get(this.$addButton);
-    this.$minusButton.innerText = template.get(this.$minusButton);
-    this.$count.innerText = template.get(this.$count);
+    this.template = new Map();
+
+    this.template.set(this.$addButton, '+');
+    this.template.set(this.$minusButton, '-');
+    this.template.set(this.$count, `현재 카운트: ${this.count}`);
+
+    super.render([this.$addButton, this.$minusButton, this.$count]);
   }
 }
