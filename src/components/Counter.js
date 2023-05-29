@@ -34,12 +34,10 @@ export default class Counter extends Component {
   }
 
   render() {
-    this.template = new Map();
-
     this.template.set(this.$addButton, '+');
     this.template.set(this.$minusButton, '-');
     this.template.set(this.$count, `현재 카운트: ${this.count}`);
 
-    super.render([this.$addButton, this.$minusButton, this.$count]);
+    super.render();
   }
 }

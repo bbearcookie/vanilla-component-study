@@ -18,13 +18,17 @@ export default class Component {
   onInitNodes() {}
 
   /**
-   * 컴포넌트 내의 DOM 요소의 값 업데이트하거나, 새로운 DOM 요소를 추가하는 로직을 작성합니다.
-   * @param {Element[]} elements
+   * 컴포넌트 내의 DOM 요소의 값 업데이트하거나, 새로운 DOM 요소를 추가하는 로직을 작성합니다.  
+   * 
+   * this.template 에 저장된 DOM 요소와 내용 중에서,
+   * 변화가 발생한 요소만 업데이트하는 로직이 기본적으로 담겨있으니
+   * 마지막에 super.render() 를 호출해야 합니다.
    */
-  render(elements) {
-    for (let element of elements) {
-      if (element.innerText !== this.template.get(element)) {
-        element.innerText = this.template.get(element);
+  render() {
+    for (let entry of this.template.entries()) {
+      const [$element, text] = entry;
+      if ($element.innerText !== text) {
+        $element.innerText = text;
       }
     }
   }
