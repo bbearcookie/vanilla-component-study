@@ -1,8 +1,10 @@
 import Component from '../utils/Component.js';
 
 export default class Counter extends Component {
-  onInitState() {
+  constructor(...args) {
+    super(...args);
     this._count = 0;
+    this.render();
   }
 
   get count() {
@@ -14,7 +16,7 @@ export default class Counter extends Component {
     this.render();
   }
 
-  onInitNodes() {
+  initNodes() {
     this.$wrapper = document.createElement('article');
     this.$wrapper.setAttribute('data-component', 'counter');
 
@@ -34,9 +36,9 @@ export default class Counter extends Component {
   }
 
   render() {
-    this.template.set(this.$addButton, '+');
-    this.template.set(this.$minusButton, '-');
-    this.template.set(this.$count, `현재 카운트: ${this.count}`);
+    this.template.set(this.$addButton, { type: 'innerText', value: '+' });
+    this.template.set(this.$minusButton, { type: 'innerText', value: '-' });
+    this.template.set(this.$count, { type: 'innerText', value: `현재 카운트: ${this.count}` });
 
     super.render();
   }

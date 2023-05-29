@@ -1,8 +1,9 @@
 import Counter from './components/Counter.js';
 import Component from './utils/Component.js';
+import LoginComponent from './components/LoginComponent.js';
 
 export default class App extends Component {
-  onInitNodes() {
+  initNodes() {
     this.$hello = document.createElement('h1');
     this.$hello.innerText = '어서오십시오';
     this.$target.appendChild(this.$hello);
@@ -15,3 +16,4 @@ export default class App extends Component {
 
 new App(document.querySelector('#app'));
 new Counter(document.querySelector('#app'));
+new LoginComponent(document.querySelector('#app'));
