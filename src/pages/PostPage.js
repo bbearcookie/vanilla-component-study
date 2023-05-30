@@ -35,8 +35,8 @@ export default class PostPage extends Component {
   }
 
   render() {
-    this.template.set(this.$prevButton, { type: 'innerText', value: '이전 포스트' });
-    this.template.set(this.$nextButton, { type: 'innerText', value: '다음 포스트' });
+    this.template.set(this.$prevButton, { type: 'textContent', value: '이전 포스트' });
+    this.template.set(this.$nextButton, { type: 'textContent', value: '다음 포스트' });
 
     super.render();
   }

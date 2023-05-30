@@ -55,8 +55,8 @@ export default class Component {
       const { type, value } = content;
 
       switch (type) {
-        case 'innerText':
-          if ($element.innerText !== value) $element.innerText = value;
+        case 'textContent':
+          if ($element.textContent !== value) $element.textContent = value;
           break;
         default:
           if ($element.getAttribute(type) !== value) $element.setAttribute(type, value);

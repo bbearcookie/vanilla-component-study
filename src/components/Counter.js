@@ -33,9 +33,9 @@ export default class Counter extends Component {
   }
 
   render() {
-    this.template.set(this.$addButton, { type: 'innerText', value: '+' });
-    this.template.set(this.$minusButton, { type: 'innerText', value: '-' });
-    this.template.set(this.$count, { type: 'innerText', value: `현재 카운트: ${this.count}` });
+    this.template.set(this.$addButton, { type: 'textContent', value: '+' });
+    this.template.set(this.$minusButton, { type: 'textContent', value: '-' });
+    this.template.set(this.$count, { type: 'textContent', value: `현재 카운트: ${this.count}` });
 
     super.render();
   }

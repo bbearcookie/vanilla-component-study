@@ -18,8 +18,8 @@ export default class NotFoundPage extends Component {
   }
 
   render() {
-    this.template.set(this.$header, { type: 'innerText', value: 'NOT FOUND 404. 존재하지 않는 페이지에요.' });
-    this.template.set(this.$button, { type: 'innerText', value: '메인 페이지로 이동' });
+    this.template.set(this.$header, { type: 'textContent', value: 'NOT FOUND 404. 존재하지 않는 페이지에요.' });
+    this.template.set(this.$button, { type: 'textContent', value: '메인 페이지로 이동' });
 
     super.render();
   }

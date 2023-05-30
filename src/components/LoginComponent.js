@@ -81,15 +81,15 @@ export default class LoginComponent extends Component {
   }
 
   render() {
-    this.template.set(this.$usernameLabel, { type: 'innerText', value: '아이디' });
+    this.template.set(this.$usernameLabel, { type: 'textContent', value: '아이디' });
     this.template.set(this.$usernameInput, { type: 'value', value: this.username });
-    this.template.set(this.$usernameText, { type: 'innerText', value: this.username });
+    this.template.set(this.$usernameText, { type: 'textContent', value: this.username });
 
-    this.template.set(this.$passwordLabel, { type: 'innerText', value: '비밀번호' });
+    this.template.set(this.$passwordLabel, { type: 'textContent', value: '비밀번호' });
     this.template.set(this.$passwordInput, { type: 'value', value: this.password });
-    this.template.set(this.$passwordText, { type: 'innerText', value: this.password });
+    this.template.set(this.$passwordText, { type: 'textContent', value: this.password });
 
-    this.template.set(this.$submitButton, { type: 'innerText', value: '전송' });
+    this.template.set(this.$submitButton, { type: 'textContent', value: '전송' });
 
     super.render();
   }

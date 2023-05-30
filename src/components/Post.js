@@ -7,7 +7,7 @@ export default class Post extends Component {
     this.error = '';
     this._postId = postId;
     this._userId = 0;
-    this._title = `제목`;
+    this._title = '제목';
     this._body = '내용';
     this.startComponent();
   }
@@ -42,12 +42,12 @@ export default class Post extends Component {
     switch (this.status) {
       case 'loading':
         this.$loading = document.createElement('h3');
-        this.$loading.innerText = '로딩중...';
+        this.$loading.textContent = '로딩중...';
         this.$target.append(this.$loading);
         break;
       case 'error':
         this.$error = document.createElement('h3');
-        this.$error.innerText = this.error;
+        this.$error.textContent = this.error;
         this.$target.append(this.$error);
         break;
       case 'success':
@@ -64,9 +64,9 @@ export default class Post extends Component {
 
   render() {
     if (this.status === 'success') {
-      this.template.set(this.$title, { type: 'innerText', value: `제목: ${this.title} (${this.postId})` });
-      this.template.set(this.$author, { type: 'innerText', value: `작성자 ID: ${this.userId}` });
-      this.template.set(this.$content, { type: 'innerText', value: `${this.body}` });
+      this.template.set(this.$title, { type: 'textContent', value: `제목: ${this.title} (${this.postId})` });
+      this.template.set(this.$author, { type: 'textContent', value: `작성자 ID: ${this.userId}` });
+      this.template.set(this.$content, { type: 'textContent', value: `${this.body}` });
 
       super.render();
     }
