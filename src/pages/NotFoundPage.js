@@ -1,5 +1,5 @@
 import Component from '../utils/Component.js';
-import { navigate } from '../utils/navigate.js';
+import { navigate } from '../utils/history.js';
 
 export default class NotFoundPage extends Component {
   initNodes() {

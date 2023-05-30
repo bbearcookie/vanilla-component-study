@@ -1,6 +1,6 @@
 import NotFoundPage from './pages/NotFoundPage.js';
 import { BASE_URL } from './constants/routeInfo.js';
-import { navigate } from './utils/navigate.js';
+import { navigate } from './utils/history.js';
 import { routes } from './constants/routeInfo.js';
 
 let currentPage = null;
