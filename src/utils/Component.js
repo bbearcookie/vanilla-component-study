@@ -12,6 +12,8 @@ export default class Component {
 
   /**
    * 컴포넌트에 필요한 DOM 요소를 생성하고, 화면에 업데이트하고, 마무리 작업을 수행하는 로직을 순차적으로 실행합니다.
+   *
+   * initNodes() => render() => componentDidMount()
    */
   startComponent() {
     this.initNodes();
@@ -20,7 +22,7 @@ export default class Component {
   }
 
   /**
-   * 컴포넌트 내에서 사용될 DOM 요소를 생성하거나,  
+   * 컴포넌트 내에서 사용될 DOM 요소를 생성하거나,
    * HTML 문서에서 가져와서 변수로 초기화하는 로직을 작성합니다.
    */
   initNodes() {}
@@ -38,7 +40,7 @@ export default class Component {
   }
 
   /**
-   * 컴포넌트 내의 DOM 요소의 값을 업데이트하거나,  
+   * 컴포넌트 내의 DOM 요소의 값을 업데이트하거나,
    * 새로운 DOM 요소를 추가하는 로직을 작성합니다.
    *
    * this.template 에 저장된 DOM 요소와 내용 중에서,
@@ -63,10 +65,8 @@ export default class Component {
   }
 
   /**
-   * 화면이 전부 그려진 이후에 수행해야 하는 로직을 작성합니다.  
-   * fetch 와 같이 시간이 걸리는 비동기 작업을 수행하는데 유용합니다. 
+   * 화면이 전부 그려진 이후에 수행해야 하는 로직을 작성합니다.
+   * fetch 와 같이 시간이 걸리는 비동기 작업을 수행하는데 유용합니다.
    */
-  componentDidMount() {
-
-  }
+  componentDidMount() {}
 }

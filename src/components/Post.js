@@ -26,25 +26,13 @@ export default class Post extends Component {
     return this._body;
   }
 
-  set postId(value) {
-    this._postId = value;
+  setPost({ postId, userId, title, body }) {
+    this._postId = postId;
+    this._userId = userId;
+    this._title = title;
+    this._body = body;
     this.render();
   }
-
-  set userId(value) {
-    this._userId = value;
-    this.render();
-  }
-
-  set title(value) {
-    this._title = value;
-    this.render();
-  }
-
-  set body(value) {
-    this._body = value;
-    this.render();
-  } 
 
   initNodes() {
     this.$wrapper = document.createElement('article');
@@ -62,6 +50,7 @@ export default class Post extends Component {
     this.template.set(this.$author, { type: 'innerText', value: `작성자 ID: ${this.userId}` });
     this.template.set(this.$content, { type: 'innerText', value: `${this.body}` });
 
+    console.log('render');
     super.render();
   }
 
@@ -77,9 +66,12 @@ export default class Post extends Component {
       return;
     }
 
-    this.postId = data.id;
-    this.userId = data.userId;
-    this.title = data.title;
-    this.body = data.body;
+    this.setPost({
+      postId: data.id,
+      userId: data.userId,
+      title: data.title,
+      body: data.body
+    });
+
   }
 }
