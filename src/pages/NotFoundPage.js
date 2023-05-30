@@ -13,7 +13,6 @@ export default class NotFoundPage extends Component {
 
     this.$wrapper.appendChild(this.$header);
     this.$wrapper.appendChild(this.$button);
-
     this.$target.appendChild(this.$wrapper);
   }
 }

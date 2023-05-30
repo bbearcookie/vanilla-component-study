@@ -21,7 +21,7 @@ function addEventToNavbar() {
 }
 
 /**
- * navigate 이벤트 작동시 렌더링 할 페이지 이벤트 등록
+ * navigate 이벤트 작동시 path 정보에 따라서 페이지 컴포넌트 렌더링하는 이벤트 등록
  */
 function addHistoryChangeEvent() {
   window.addEventListener('navigate', e => {

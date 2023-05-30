@@ -22,7 +22,9 @@ export default class Component {
 
   /**
    * 컴포넌트 내에서 사용될 DOM 요소를 생성하거나,
-   * HTML 문서에서 가져와서 변수로 초기화하는 로직을 작성합니다.
+   * HTML 문서에서 가져와서 변수로 초기화하는 로직을 작성합니다.  
+   * 
+   * clearNodes() 동작시 this.$wrapper 요소를 삭제하기 때문에, 최상단의 노드를 this.$wrapper 에 보관해주세요.
    */
   initNodes() {}
 
