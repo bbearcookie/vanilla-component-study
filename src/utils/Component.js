@@ -4,13 +4,14 @@ export default class Component {
    */
   constructor($target) {
     this.$target = $target;
+    this.$wrapper = null;
     this.template = new Map();
     this.initNodes();
     this.render();
   }
 
   /**
-   * 컴포넌트 내에서 사용될 DOM 요소를 생성하고 초기화합니다.
+   * 컴포넌트 내에서 사용될 DOM 요소를 생성하거나 문서에서 가져와서 변수로 초기화하는 로직을 작성합니다.
    */
   initNodes() {}
 

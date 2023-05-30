@@ -1,19 +1,37 @@
-import Counter from './components/Counter.js';
 import Component from './utils/Component.js';
-import LoginComponent from './components/LoginComponent.js';
+import { BASE_URL } from './constants/routeInfo.js';
+import { navigate } from './utils/navigate.js';
+import { routes } from './constants/routeInfo.js';
 
 export default class App extends Component {
-  initNodes() {
-    this.$hello = document.createElement('h1');
-    this.$hello.innerText = '어서오십시오';
-    this.$target.appendChild(this.$hello);
+  constructor(...args) {
+    super(...args);
+    this.$content = null;
   }
 
-  render() {
-    this.$hello.innerText = '이렇게 텍스트 바꿉니다';
+  initNodes() {
+    document.querySelector('.navbar').addEventListener('click', e => {
+      const target = e.target.closest('a');
+      if (!(target instanceof HTMLAnchorElement)) return;
+
+      e.preventDefault();
+      const path = e.target.href.replace(BASE_URL, '');
+      navigate(path);
+    });
+
+    window.addEventListener('historychange', e => {
+      const { to } = e.detail;
+
+      if (location.pathname === to) history.replaceState(null, '', to);
+      else history.pushState(null, '', to);
+
+      let CurrentPage = routes.find(r => r.path.test(location.pathname)).element;
+      if (this.$content) this.$target.removeChild(this.$content.$wrapper); // 기존 페이지 내용 삭제
+      this.$content = new CurrentPage(this.$target);
+    });
   }
 }
 
-new App(document.querySelector('#app'));
-new Counter(document.querySelector('#app'));
-new LoginComponent(document.querySelector('#app'));
+window.addEventListener('DOMContentLoaded', e => {
+  new App(document.querySelector('#app'));
+});

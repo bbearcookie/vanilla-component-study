@@ -40,9 +40,9 @@ export default class LoginComponent extends Component {
   }
 
   initNodes() {
-    this.$form = document.createElement('form');
-    this.$form.setAttribute('data-component', 'login-component');
-    this.$form.addEventListener('submit', e => this.handleSubmit(e));
+    this.$wrapper = document.createElement('form');
+    this.$wrapper.setAttribute('data-component', 'login-component');
+    this.$wrapper.addEventListener('submit', e => this.handleSubmit(e));
 
     // 아이디 부분
     {
@@ -80,11 +80,11 @@ export default class LoginComponent extends Component {
     this.$submitButton = document.createElement('button');
     this.$submitButton.setAttribute('type', 'submit');
 
-    this.$form.appendChild(this.$usernameSection);
-    this.$form.appendChild(this.$passwordSection);
-    this.$form.appendChild(this.$submitButton);
+    this.$wrapper.appendChild(this.$usernameSection);
+    this.$wrapper.appendChild(this.$passwordSection);
+    this.$wrapper.appendChild(this.$submitButton);
 
-    this.$target.appendChild(this.$form);
+    this.$target.appendChild(this.$wrapper);
   }
 
   render() {
