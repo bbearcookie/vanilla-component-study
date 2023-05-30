@@ -8,11 +8,8 @@ export default class Post extends Component {
     this.$author = document.createElement('p');
     this.$content = document.createElement('p');
 
-    this.$wrapper.appendChild(this.$title);
-    this.$wrapper.appendChild(this.$author);
-    this.$wrapper.appendChild(this.$content);
-
-    this.$target.appendChild(this.$wrapper);
+    this.$wrapper.append(this.$title, this.$author, this.$content);
+    this.$target.append(this.$wrapper);
   }
 
   render() {

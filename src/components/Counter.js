@@ -28,11 +28,8 @@ export default class Counter extends Component {
 
     this.$count = document.createElement('div');
 
-    this.$wrapper.appendChild(this.$addButton);
-    this.$wrapper.appendChild(this.$minusButton);
-    this.$wrapper.appendChild(this.$count);
-
-    this.$target.appendChild(this.$wrapper);
+    this.$wrapper.append(this.$addButton, this.$minusButton, this.$count);
+    this.$target.append(this.$wrapper);
   }
 
   render() {

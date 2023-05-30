@@ -15,10 +15,8 @@ export default class PostPage extends Component {
     this.$prevButton = document.createElement('button');
     this.$nextButton = document.createElement('button');
 
-    this.$wrapper.appendChild(this.$prevButton);
-    this.$wrapper.appendChild(this.$nextButton);
-
-    this.$target.appendChild(this.$wrapper);
+    this.$wrapper.append(this.$prevButton, this.$nextButton);
+    this.$target.append(this.$wrapper);
   }
 
   render() {

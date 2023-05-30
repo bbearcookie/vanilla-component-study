@@ -55,9 +55,7 @@ export default class LoginComponent extends Component {
         this.$usernameInput.addEventListener('input', e => this.handleChangeUsername(e));
         this.$usernameText = document.createElement('span');
       }
-      this.$usernameSection.appendChild(this.$usernameLabel);
-      this.$usernameSection.appendChild(this.$usernameInput);
-      this.$usernameSection.appendChild(this.$usernameText);
+      this.$usernameSection.append(this.$usernameLabel, this.$usernameInput, this.$usernameText);
     }
 
     // 비밀번호 부분
@@ -72,19 +70,14 @@ export default class LoginComponent extends Component {
         this.$passwordInput.addEventListener('input', e => this.handleChangePassword(e));
         this.$passwordText = document.createElement('span');
       }
-      this.$passwordSection.appendChild(this.$passwordLabel);
-      this.$passwordSection.appendChild(this.$passwordInput);
-      this.$passwordSection.appendChild(this.$passwordText);
+      this.$passwordSection.append(this.$passwordLabel, this.$passwordInput, this.$passwordText);
     }
 
     this.$submitButton = document.createElement('button');
     this.$submitButton.setAttribute('type', 'submit');
 
-    this.$wrapper.appendChild(this.$usernameSection);
-    this.$wrapper.appendChild(this.$passwordSection);
-    this.$wrapper.appendChild(this.$submitButton);
-
-    this.$target.appendChild(this.$wrapper);
+    this.$wrapper.append(this.$usernameSection, this.$passwordSection, this.$submitButton);
+    this.$target.append(this.$wrapper);
   }
 
   render() {
