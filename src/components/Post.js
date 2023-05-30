@@ -3,6 +3,8 @@ import Component from '../utils/Component.js';
 export default class Post extends Component {
   constructor({ $target, postId }) {
     super($target, { skip: true });
+    this.status = 'loading';
+    this.error = '';
     this._postId = postId;
     this._userId = 0;
     this._title = `제목`;
@@ -31,47 +33,69 @@ export default class Post extends Component {
     this._userId = userId;
     this._title = title;
     this._body = body;
-    this.render();
   }
 
   initNodes() {
-    this.$wrapper = document.createElement('article');
+    if (this.$loading) this.$loading.remove();
+    if (this.$error) this.$error.remove();
 
-    this.$title = document.createElement('h3');
-    this.$author = document.createElement('p');
-    this.$content = document.createElement('p');
+    switch (this.status) {
+      case 'loading':
+        this.$loading = document.createElement('h3');
+        this.$loading.innerText = '로딩중...';
+        this.$target.append(this.$loading);
+        break;
+      case 'error':
+        this.$error = document.createElement('h3');
+        this.$error.innerText = this.error;
+        this.$target.append(this.$error);
+        break;
+      case 'success':
+        this.$title = document.createElement('h3');
+        this.$author = document.createElement('p');
+        this.$content = document.createElement('p');
 
-    this.$wrapper.append(this.$title, this.$author, this.$content);
-    this.$target.append(this.$wrapper);
+        this.$target.append(this.$title, this.$author, this.$content);
+        break;
+      default:
+        break;
+    }
   }
 
   render() {
-    this.template.set(this.$title, { type: 'innerText', value: `제목: ${this.title} (${this.postId})` });
-    this.template.set(this.$author, { type: 'innerText', value: `작성자 ID: ${this.userId}` });
-    this.template.set(this.$content, { type: 'innerText', value: `${this.body}` });
+    if (this.status === 'success') {
+      this.template.set(this.$title, { type: 'innerText', value: `제목: ${this.title} (${this.postId})` });
+      this.template.set(this.$author, { type: 'innerText', value: `작성자 ID: ${this.userId}` });
+      this.template.set(this.$content, { type: 'innerText', value: `${this.body}` });
 
-    console.log('render');
-    super.render();
+      super.render();
+    }
   }
 
   async componentDidMount() {
-    const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${this.postId}`);
-    const data = await response.json();
+    try {
+      const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${this.postId}`);
+      const data = await response.json();
 
-    if (Object.keys(data).length === 0) {
-      this.userId = 0;
-      this.title = `NOT FOUND`;
-      this.body = `존재하지 않는 게시글이에요.`;
+      if (Object.keys(data).length === 0) {
+        this.status = 'error';
+        this.error = 'NOT FOUND 404 존재하지 않는 게시글이에요.';
+        return;
+      }
 
-      return;
+      this.status = 'success';
+      this.setPost({
+        postId: data.id,
+        userId: data.userId,
+        title: data.title,
+        body: data.body,
+      });
+    } catch (err) {
+      this.status = 'error';
+      this.error = err;
+    } finally {
+      this.initNodes();
+      this.render();
     }
-
-    this.setPost({
-      postId: data.id,
-      userId: data.userId,
-      title: data.title,
-      body: data.body
-    });
-
   }
 }

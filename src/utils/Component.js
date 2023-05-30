@@ -11,8 +11,7 @@ export default class Component {
   }
 
   /**
-   * 컴포넌트에 필요한 DOM 요소를 생성하고, 화면에 업데이트하고, 마무리 작업을 수행하는 로직을 순차적으로 실행합니다.
-   *
+   * 컴포넌트에 필요한 DOM 요소를 생성하고, 화면에 업데이트하고, 마무리 작업을 수행하는 로직을 순차적으로 실행합니다.  
    * initNodes() => render() => componentDidMount()
    */
   startComponent() {
@@ -34,8 +33,9 @@ export default class Component {
     if (this.$wrapper) this.$wrapper.parentNode.removeChild(this.$wrapper);
 
     for (let entry of this.template.entries()) {
-      const [$element, content] = entry;
-      $element.parentNode.removeChild($element);
+      const [$element] = entry;
+      if (!($element instanceof Element)) continue;
+      $element.remove();
     }
   }
 
@@ -50,6 +50,7 @@ export default class Component {
   render() {
     for (let entry of this.template.entries()) {
       const [$element, content] = entry;
+      if (!($element instanceof Element)) continue;
       if (content === null) continue;
       const { type, value } = content;
 

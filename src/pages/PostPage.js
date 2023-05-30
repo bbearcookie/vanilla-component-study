@@ -21,7 +21,8 @@ export default class PostPage extends Component {
 
   initNodes() {
     this.$wrapper = document.createElement('main');
-    this.Post = new Post({ $target: this.$wrapper, postId: this.postId });
+    this.$postSection = document.createElement('article');
+    this.Post = new Post({ $target: this.$postSection, postId: this.postId });
 
     this.$prevButton = document.createElement('button');
     this.$prevButton.addEventListener('click', () => this.postId--);
@@ -29,7 +30,7 @@ export default class PostPage extends Component {
     this.$nextButton = document.createElement('button');
     this.$nextButton.addEventListener('click', () => this.postId++);
 
-    this.$wrapper.append(this.$prevButton, this.$nextButton);
+    this.$wrapper.append(this.$postSection, this.$prevButton, this.$nextButton);
     this.$target.append(this.$wrapper);
   }
 
