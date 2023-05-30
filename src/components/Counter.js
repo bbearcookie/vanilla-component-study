@@ -2,9 +2,9 @@ import Component from '../utils/Component.js';
 
 export default class Counter extends Component {
   constructor(...args) {
-    super(...args, { skipRender: true });
+    super(...args, { skip: true });
     this._count = 0;
-    this.render();
+    this.startComponent();
   }
 
   get count() {

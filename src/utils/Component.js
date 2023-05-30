@@ -1,13 +1,22 @@
 export default class Component {
   /**
    * @param {Element} $target
+   * @param {object} options skip 멤버를 등록하면 Component 생성자에서의 startComponent() 가 동작하지 않고 넘어갑니다.
    */
   constructor($target, options) {
     this.$target = $target;
     this.$wrapper = null;
     this.template = new Map();
+    if (!options?.skip) this.startComponent();
+  }
+
+  /**
+   * 컴포넌트에 필요한 DOM 요소를 생성하고, 화면에 업데이트하고, 마무리 작업을 수행하는 로직을 순차적으로 실행합니다.
+   */
+  startComponent() {
     this.initNodes();
-    if (!options?.skipRender) this.render();
+    this.render();
+    this.componentDidMount();
   }
 
   /**
@@ -51,5 +60,13 @@ export default class Component {
           break;
       }
     }
+  }
+
+  /**
+   * 화면이 전부 그려진 이후에 수행해야 하는 로직을 작성합니다.  
+   * fetch 와 같이 시간이 걸리는 비동기 작업을 수행하는데 유용합니다. 
+   */
+  componentDidMount() {
+
   }
 }

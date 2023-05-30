@@ -2,10 +2,10 @@ import Component from '../utils/Component.js';
 
 export default class LoginComponent extends Component {
   constructor(...args) {
-    super(...args, { skipRender: true });
+    super(...args, { skip: true });
     this._username = '';
     this._password = '';
-    this.render();
+    this.startComponent();
   }
 
   get username() {
