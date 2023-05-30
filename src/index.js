@@ -4,7 +4,7 @@ import { navigate } from './utils/history.js';
 import { routes } from './constants/routeInfo.js';
 
 let currentPage = null;
-let target = document.querySelector('#app');
+const $target = document.querySelector('#app');
 
 /**
  * 네비바에 등록된 링크 클릭시 이벤트 등록
@@ -32,7 +32,7 @@ function addHistoryChangeEvent() {
 
     let NextPage = routes.find(r => r.path.test(location.pathname))?.element || NotFoundPage;
     if (currentPage) currentPage.clearNodes();
-    currentPage = new NextPage(target);
+    currentPage = new NextPage($target);
   });
 }
 

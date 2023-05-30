@@ -1,6 +1,6 @@
-import Component from '../utils/Component.js';
+import Component from '../../utils/Component.js';
 
-export default class Counter extends Component {
+export default class CounterPage extends Component {
   constructor(...args) {
     super(...args, { skip: true });
     this._count = 0;
@@ -21,9 +21,11 @@ export default class Counter extends Component {
     this.$wrapper.setAttribute('data-component', 'counter');
 
     this.$addButton = document.createElement('button');
+    this.$addButton.textContent = '+';
     this.$addButton.addEventListener('click', () => this.count++);
 
     this.$minusButton = document.createElement('button');
+    this.$minusButton.textContent = '-';
     this.$minusButton.addEventListener('click', () => this.count--);
 
     this.$count = document.createElement('div');
@@ -33,10 +35,7 @@ export default class Counter extends Component {
   }
 
   render() {
-    this.template.set(this.$addButton, { type: 'textContent', value: '+' });
-    this.template.set(this.$minusButton, { type: 'textContent', value: '-' });
     this.template.set(this.$count, { type: 'textContent', value: `현재 카운트: ${this.count}` });
-
     super.render();
   }
 }

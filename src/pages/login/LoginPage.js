@@ -1,6 +1,6 @@
-import Component from '../utils/Component.js';
+import Component from '../../utils/Component.js';
 
-export default class LoginComponent extends Component {
+export default class LoginPage extends Component {
   constructor(...args) {
     super(...args, { skip: true });
     this._username = '';
@@ -50,6 +50,7 @@ export default class LoginComponent extends Component {
       {
         this.$usernameLabel = document.createElement('label');
         this.$usernameLabel.setAttribute('for', 'username');
+        this.$usernameLabel.textContent = '아이디';
         this.$usernameInput = document.createElement('input');
         this.$usernameInput.setAttribute('id', 'username');
         this.$usernameInput.addEventListener('input', e => this.handleChangeUsername(e));
@@ -64,6 +65,7 @@ export default class LoginComponent extends Component {
       {
         this.$passwordLabel = document.createElement('label');
         this.$passwordLabel.setAttribute('for', 'password');
+        this.$passwordLabel.textContent = '비밀번호';
         this.$passwordInput = document.createElement('input');
         this.$passwordInput.setAttribute('id', 'password');
         this.$passwordInput.setAttribute('type', 'password');
@@ -75,21 +77,17 @@ export default class LoginComponent extends Component {
 
     this.$submitButton = document.createElement('button');
     this.$submitButton.setAttribute('type', 'submit');
+    this.$submitButton.textContent = '전송';
 
     this.$wrapper.append(this.$usernameSection, this.$passwordSection, this.$submitButton);
     this.$target.append(this.$wrapper);
   }
 
   render() {
-    this.template.set(this.$usernameLabel, { type: 'textContent', value: '아이디' });
     this.template.set(this.$usernameInput, { type: 'value', value: this.username });
     this.template.set(this.$usernameText, { type: 'textContent', value: this.username });
-
-    this.template.set(this.$passwordLabel, { type: 'textContent', value: '비밀번호' });
     this.template.set(this.$passwordInput, { type: 'value', value: this.password });
     this.template.set(this.$passwordText, { type: 'textContent', value: this.password });
-
-    this.template.set(this.$submitButton, { type: 'textContent', value: '전송' });
 
     super.render();
   }

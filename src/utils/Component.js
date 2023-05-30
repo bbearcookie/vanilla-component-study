@@ -11,7 +11,7 @@ export default class Component {
   }
 
   /**
-   * 컴포넌트에 필요한 DOM 요소를 생성하고, 화면에 업데이트하고, 마무리 작업을 수행하는 로직을 순차적으로 실행합니다.  
+   * 컴포넌트에 필요한 DOM 요소를 생성하고, 화면에 업데이트하고, 마무리 작업을 수행하는 로직을 순차적으로 실행합니다.
    * initNodes() => render() => componentDidMount()
    */
   startComponent() {
@@ -27,16 +27,10 @@ export default class Component {
   initNodes() {}
 
   /**
-   * 컴포넌트 내에 존재하는 DOM 요소를 모두 제거합니다.
+   * 컴포넌트 내에 존재하는 DOM 요소를 제거합니다.
    */
   clearNodes() {
     if (this.$wrapper) this.$wrapper.remove();
-
-    for (let entry of this.template.entries()) {
-      const [$element] = entry;
-      if (!($element instanceof Element)) continue;
-      $element.remove();
-    }
   }
 
   /**
