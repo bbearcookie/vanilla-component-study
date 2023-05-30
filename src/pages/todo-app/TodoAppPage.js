@@ -1,6 +1,6 @@
 import Component from '../../utils/Component.js';
-import InputForm from './InputForm.js';
-import TodoList from './TodoList.js';
+import InputForm from './components/InputForm.js';
+import TodoList from './components/TodoList.js';
 
 export default class TodoAppPage extends Component {
   constructor(...args) {

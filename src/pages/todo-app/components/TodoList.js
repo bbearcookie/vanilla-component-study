@@ -1,4 +1,4 @@
-import Component from '../../utils/Component.js';
+import Component from '../../../utils/Component.js';
 
 export default class TodoList extends Component {
   constructor({ $target, handleRemoveItem }) {

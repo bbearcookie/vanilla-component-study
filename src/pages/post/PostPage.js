@@ -1,6 +1,6 @@
-import Component from '../utils/Component.js';
-import Post from '../components/Post.js';
-import { navigate } from '../utils/history.js';
+import Component from '../../utils/Component.js';
+import Post from './components/Post.js';
+import { navigate } from '../../utils/history.js';
 
 export default class PostPage extends Component {
   constructor(...args) {

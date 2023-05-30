@@ -1,7 +1,7 @@
 import Counter from '../components/Counter.js';
 import MainPage from '../pages/MainPage.js';
 import LoginComponent from '../components/LoginComponent.js';
-import PostPage from '../pages/PostPage.js';
+import PostPage from '../pages/post/PostPage.js';
 import TodoAppPage from '../pages/todo-app/TodoAppPage.js';
 
 export const BASE_URL = 'http://127.0.0.1:5500';
