@@ -6,7 +6,7 @@ import { routes } from './constants/routeInfo.js';
 export default class App extends Component {
   constructor(...args) {
     super(...args);
-    this.$content = null;
+    this.$page = null;
   }
 
   initNodes() {
@@ -26,8 +26,8 @@ export default class App extends Component {
       else history.pushState(null, '', to);
 
       let CurrentPage = routes.find(r => r.path.test(location.pathname)).element;
-      if (this.$content) this.$target.removeChild(this.$content.$wrapper); // 기존 페이지 내용 삭제
-      this.$content = new CurrentPage(this.$target);
+      if (this.$page) this.$page.clearNodes();
+      this.$page = new CurrentPage(this.$target);
     });
   }
 }
