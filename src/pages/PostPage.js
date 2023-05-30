@@ -2,8 +2,6 @@ import Component from '../utils/Component.js';
 import Post from '../components/Post.js';
 import { navigate } from '../utils/history.js';
 
-// 기본 프로퍼티 값들을 두번째 인자로 보내는 방식으로 바꾸자.
-
 export default class PostPage extends Component {
   constructor(...args) {
     super(...args, { skip: true });
@@ -23,7 +21,7 @@ export default class PostPage extends Component {
 
   initNodes() {
     this.$wrapper = document.createElement('main');
-    this.Post = new Post({ $target: this.$wrapper });
+    this.Post = new Post({ $target: this.$wrapper, postId: this.postId });
 
     this.$prevButton = document.createElement('button');
     this.$prevButton.addEventListener('click', () => this.postId--);
@@ -38,7 +36,6 @@ export default class PostPage extends Component {
   render() {
     this.template.set(this.$prevButton, { type: 'innerText', value: '이전 포스트' });
     this.template.set(this.$nextButton, { type: 'innerText', value: '다음 포스트' });
-    this.Post.title = '메롱';
 
     super.render();
   }
