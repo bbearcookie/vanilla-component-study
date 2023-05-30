@@ -30,7 +30,7 @@ export default class Component {
    * 컴포넌트 내에 존재하는 DOM 요소를 모두 제거합니다.
    */
   clearNodes() {
-    if (this.$wrapper) this.$wrapper.parentNode.removeChild(this.$wrapper);
+    if (this.$wrapper) this.$wrapper.remove();
 
     for (let entry of this.template.entries()) {
       const [$element] = entry;

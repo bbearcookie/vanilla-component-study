@@ -2,6 +2,7 @@ import Counter from '../components/Counter.js';
 import MainPage from '../pages/MainPage.js';
 import LoginComponent from '../components/LoginComponent.js';
 import PostPage from '../pages/PostPage.js';
+import TodoAppPage from '../pages/todo-app/TodoAppPage.js';
 
 export const BASE_URL = 'http://127.0.0.1:5500';
 
@@ -10,4 +11,5 @@ export const routes = [
   { path: /^\/counter$/, element: Counter },
   { path: /^\/login$/, element: LoginComponent },
   { path: /^\/post\/[\w]+$/, element: PostPage },
+  { path: /^\/todoapp$/, element: TodoAppPage },
 ];

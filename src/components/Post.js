@@ -54,7 +54,6 @@ export default class Post extends Component {
         this.$title = document.createElement('h3');
         this.$author = document.createElement('p');
         this.$content = document.createElement('p');
-
         this.$target.append(this.$title, this.$author, this.$content);
         break;
       default:
