@@ -2,12 +2,12 @@ export default class Component {
   /**
    * @param {Element} $target
    */
-  constructor($target) {
+  constructor($target, options) {
     this.$target = $target;
     this.$wrapper = null;
     this.template = new Map();
     this.initNodes();
-    this.render();
+    if (!options?.skipRender) this.render();
   }
 
   /**

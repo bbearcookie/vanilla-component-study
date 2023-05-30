@@ -2,7 +2,7 @@ import Component from '../utils/Component.js';
 
 export default class Counter extends Component {
   constructor(...args) {
-    super(...args);
+    super(...args, { skipRender: true });
     this._count = 0;
     this.render();
   }
